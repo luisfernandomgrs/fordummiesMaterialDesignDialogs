@@ -17,8 +17,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
 	private Toolbar toolbar;
-	private Button btnAlert;
-	private AlertDialog alertDialog;
+	private Button btnAlert, btnAlertOptions;
+	private AlertDialog alertDialog, alertDialogOptions;
+	private String[] optionsAlert = {"Option One", "Option Two", "Option Three", "Option Four"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,27 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View view) {
 				alertDialog.show();
+			}
+		});
+
+		AlertDialog.Builder builderDialogOptions = new AlertDialog.Builder(this);
+		builderDialogOptions.setTitle("Choice Alert Dialog");
+		builderDialogOptions.setSingleChoiceItems(optionsAlert, -1, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialogInterface, int i) {
+				Toast.makeText(MainActivity.this, optionsAlert[i], Toast.LENGTH_SHORT).show();
+			}
+		});
+		builderDialogOptions.setPositiveButton("Yes", null);
+		builderDialogOptions.setNegativeButton("No", null);
+		alertDialogOptions = builderDialogOptions.create();
+
+		btnAlertOptions = findViewById(R.id.btnAlertOptions);
+		btnAlertOptions.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				//Toast.makeText(MainActivity.this, "Alert Dialog with options", Toast.LENGTH_SHORT).show();
+				alertDialogOptions.show();
 			}
 		});
 	}
