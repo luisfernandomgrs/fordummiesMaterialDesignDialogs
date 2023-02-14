@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 		toolbar = (Toolbar) findViewById(R.id.toolbar_personal);
 		setSupportActionBar(toolbar);
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
 		builder.setTitle("Confirmation");
 		builder.setMessage("Showing Confirmation Alert Dialog");
 		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
